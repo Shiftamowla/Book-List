@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<h3>ADD BOOKS</h3>
+
+<div>
+    {% for i in data %}
+  <form action="{% url 'update' %}"  method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+    <input type="text" id="fname" name="id" value="{{i.id}}" readonly>
+
+    <label for="fname">name</label>
+    <input type="text" id="fname" name="name" value="{{i.name}}">
+
+    <label for="lname">writter</label>
+    <input type="text" id="lname" name="writter"value="{{i.writter}}">
+
+    <label for="lname">img</label>
+    <input type="file" id="lname" name="img"value="{{i.img}}">
+
+    <label for="lname">published date</label>
+    <input type="date" id="lname" name="published_date"value="{{i.published_date}}">
+
+    <label for="lname">Type</label>
+    <input type="text" id="lname" name="type"value="{{i.type}}">
+
+
+    <img height="200px" width="150px"  src="/{{i.img}}">
+    <input type="hidden" id="lname" name="old_img"value="{{i.img}}">
+
+  
+    <input type="submit" value="Submit">
+  </form>
+  {% endfor %}
+</div>
+
+</body>
+</html>
+
+
+
+
+{% endblock body %}

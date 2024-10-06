@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <meta name="author" content="Codeconvey" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+    <!--Only for demo purpose - no need to add.-->
+    <link rel="stylesheet" href="/static/css/demo.css" />
+    
+	    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+		
+<div class="ScriptTop">
+    <div class="rt-container">
+        <div class="col-rt-4" id="float-right">
+ 
+            <!-- Ad Here -->
+            
+        </div>
+    </div>
+</div>
+
+<section>
+  <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+{% for i in data %}  
+<!-- Student Profile -->
+<div class="student-profile py-4">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-transparent text-center">
+          <img height="200px" width="150px"  src="/{{i.img}}">
+          <h3>{{i.name}}</h3>
+        </div>
+        <div class="card-body">
+          <p class="mb-0"><strong class="pr-1">Writer:</strong>{{i.writter}}</p>
+          <p class="mb-0"><strong class="pr-1">Published Date:</strong>{{i.published_date}}</p>
+          <p class="mb-0"><strong class="pr-1">Type:</strong>{{i.type}}</p>
+
+          <a href="{% url 'deletepage' i.id %}" class="btn btn-danger btn-sm mr-2">Delete</a>
+          <a href="{% url 'book' i.id %}" class="btn btn-info btn-sm mr-2">View</a>
+          <a href="{% url 'editpage' i.id %}" class="btn btn-warning btn-sm">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+<!-- partial -->
+         
+      </div>
+  </div>
+  </div>
+</section>
+
+     
+
+
+    <!-- Analytics -->
+
+	</body>
+</html>
